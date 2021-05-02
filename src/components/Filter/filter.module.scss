@@ -1,0 +1,18 @@
+@import '../../variables.module.scss';
+
+.CategoriesFilter {
+  margin-bottom: 20px;
+}
+.Category {
+  color: #{$white};
+  border: 1px solid #{$white};
+  border-radius: 5px;
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 10px;
+  padding: 10px;
+}
+.CategorySelected {
+  background-color: #{$white};
+  color: #{$black};
+}

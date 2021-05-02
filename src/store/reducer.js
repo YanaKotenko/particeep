@@ -20,27 +20,9 @@ const movieReducer = (state = initState, action) => {
       };
 
     case SET_FILTERS_CATEGORIES: {
-			const categories = action.categories.map((movie) => ({
-				id: movie.id,
-				title: movie.category,
-				checked: false,
-			}))
-			const ddd = categories.map((movie) => {
-				return categories.find((item) => item.title === movie.title)
-			})
-
-			console.log(ddd);
-		 
-			// const filtered = categories.filter((category, index) => {
-			// 	console.log(categories.indexOf(category));
-
-			// 	return categories.indexOf(category.title) === index
-			// });
-			// console.log(filtered);
-
       return {
         ...state,
-        categories: categories,
+        categories: action.categories,
       };
 		}
 
@@ -54,25 +36,34 @@ const movieReducer = (state = initState, action) => {
       };
     }
 
-    // case TOGGLE_CATEGORY_STATE: {
-		// 	const copyState = [...state.moviesList]
-		// 	const likedMovie = copyState.find((movie) => movie.id === action.id);
-		// 	likedMovie.likes += 1
+    case TOGGLE_CATEGORY_STATE: {
+			const copyStateCategories = [...state.categories];
+			const selectedCategory = copyStateCategories.find((cat) => cat.id === action.id);
+			if (selectedCategory.checked) {
+				selectedCategory.checked = false;
+			} else {
+				selectedCategory.checked = true;
+			}
         
-    //   return {
-    //     ...state,
-    //     moviesList: copyState,
-    //   };
-    // }
+      return {
+        ...state,
+        categories: copyStateCategories,
+      };
+    }
 
     case EVOLUATE_MOVIE: {
 			const copyState = [...state.moviesList];
 			const movie = copyState.find((movie) => movie.id === action.id);
+		
 			if (action.action === 'like') {
-				movie.setLike = true;
+				movie.likes = movie.setLike ? movie.likes -= 1 : movie.likes += 1;
+				movie.dislikes = movie.setDislike ? movie.dislikes -= 1 : movie.dislikes;
+    		movie.setLike = movie.setLike ? false : true;
 				movie.setDislike = false;
 			} else if (action.action === 'dislike') {
-				movie.setDislike = true;
+				movie.dislikes = movie.setDislike ? movie.dislikes -= 1 : movie.dislikes += 1;
+				movie.likes = movie.setLike ? movie.likes -= 1 : movie.likes;
+				movie.setDislike = movie.setDislike ? false : true;
 				movie.setLike = false;
 			}
         
