@@ -1,18 +1,42 @@
 @import '../../variables.module.scss';
 
-.CategoriesFilter {
-  margin-bottom: 20px;
+.FilterBox {
+  margin: 0 -5px 20px;
+
+  &:after {
+    content: '';
+    clear: both;
+    display: block;
+  }
 }
+
+.CategoriesFilter {
+  float: left;
+}
+
 .Category {
   color: #{$white};
   border: 1px solid #{$white};
-  border-radius: 5px;
+  border-radius: #{$borderRadius};
   display: inline-block;
+  vertical-align: middle;
   cursor: pointer;
-  margin-right: 10px;
+  margin: 0 5px;
   padding: 10px;
+  text-align: center;
 }
-.CategorySelected {
+
+.Active {
   background-color: #{$white};
   color: #{$black};
+}
+
+.PerPageBox {
+  float: right;
+}
+
+.PerPage {
+  @extend .Category;
+  width: 40px;
+  height: 40px;
 }

@@ -5,6 +5,7 @@
   vertical-align: bottom;
   margin-left: 15px;
 }
+
 .MovieLikeIcon {
   width: 20px;
   height: 20px;
@@ -13,6 +14,7 @@
   cursor: pointer;
   color: #{$white};
 }
+
 .MovieCounter {
   display: inline-block;
   color: #{$white};
@@ -20,9 +22,11 @@
   font-size: 11px;
   vertical-align: text-top;
 }
+
 .RotateIcon {
   transform: rotate(180deg);
 }
+
 .CheckedIcon {
   color: red;
 }

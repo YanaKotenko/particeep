@@ -9,6 +9,7 @@
     clear: both;
   }
 }
+
 .Movie {
   display: inline-block;
   width: 33.33%;
@@ -23,13 +24,16 @@
     width: 100%;
   }
 }
+
 .MovieImage {
   width: 100%;
   vertical-align: bottom;
 }
+
 .MovieImageBox {
   position: relative;
 }
+
 .MovieImageFader {
   position: absolute;
   width: 100%;
@@ -38,6 +42,7 @@
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
 .MovieImageBottom {
   position: absolute;
   bottom: 0;
@@ -46,20 +51,23 @@
   text-align: right;
   padding: 10px;
 }
+
 .MovieTextBox {
   padding: 15px;
   background-color: #171717;
 }
+
 .MovieTitle {
   font-size: 16px;
   font-weight: 900;
   color: #{$white};
 }
+
 .MovieCategory {
   font-size: 12px;
   padding: 5px;
   border: 1px solid #{$white};
-  border-radius: 5px;
+  border-radius: #{$borderRadius};
   display: inline-block;
   color: #{$white};
   position: absolute;
@@ -67,6 +75,7 @@
   top: 8px;
   left: 8px;
 }
+
 .MovieDelete {
   width: 20px;
   height: 20px;

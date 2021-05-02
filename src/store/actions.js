@@ -5,12 +5,25 @@ import {
   SET_FILTERS_CATEGORIES,
   TOGGLE_CATEGORY_STATE,
   EVOLUATE_MOVIE,
+  FILTER_MOVIES,
 } from './const';
 
 export const getMovies = () => (dispatch) => {
   movies$.then((res) => {
     dispatch({ type: GET_MOVIES, moviesList: res });
   });
+};
+
+export const getCategories = (moviesList) => (dispatch) => {
+  const categories = moviesList.map((movie) => ({
+    id: movie.id,
+    title: movie.category,
+    checked: false,
+  }));
+  const titles = categories.map((cat) => cat.title);
+  const filteredCategories = categories.filter(({title}, index) => !titles.includes(title, index + 1));
+
+  dispatch({ type: SET_FILTERS_CATEGORIES, categories: filteredCategories });
 };
 
 export const setCategories = (filteredCategories) => (dispatch) => {
@@ -27,4 +40,8 @@ export const toggleCategoryState = (id) => (dispatch) => {
 
 export const evoluateMovie = (id, action) => (dispatch) => {
   dispatch({ type: EVOLUATE_MOVIE, id, action });
+};
+
+export const filterMovies = (checkedCategories) => (dispatch) => {
+  dispatch({ type: FILTER_MOVIES, checkedCategories });
 };

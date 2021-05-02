@@ -5,9 +5,12 @@ import classNames from 'classnames';
 import { toggleCategoryState } from '../../store/actions';
 
 import {
+  FilterBox,
   CategoriesFilter,
   Category,
-  CategorySelected,
+  Active,
+  PerPageBox,
+  PerPage,
 } from './filter.module.scss';
 
 const Filter = (props) => {
@@ -18,17 +21,34 @@ const Filter = (props) => {
     dispatch(toggleCategoryState(id));
   }
 
+  const onClickAmount = (amount) => {
+    // dispatch(toggleCategoryState(id));
+  }
+
   return (
-    <div className={CategoriesFilter}>
-      {categories.map((category) => (
-        <div
-          key={category.id}
-          className={classNames(Category, category.checked ? CategorySelected : '')}
-          onClick={() => onToggleChecked(category.id)}
-        >
-          {category.title}
-        </div>
-      ))}
+    <div className={FilterBox}>
+      <div className={CategoriesFilter}>
+        {categories.map((category) => (
+          <div
+            key={category.id}
+            className={classNames(Category, category.checked ? Active : '')}
+            onClick={() => onToggleChecked(category.id)}
+          >
+            {category.title}
+          </div>
+        ))}
+      </div>
+      <div className={PerPageBox}>
+        {[4, 8, 12].map((amount) => (
+          <div
+            key={amount}
+            className={classNames(PerPage, true ? Active : '')}
+            onClick={() => onClickAmount(amount)}
+          >
+            {amount}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

@@ -4,11 +4,13 @@ import {
   SET_FILTERS_CATEGORIES,
 	TOGGLE_CATEGORY_STATE,
 	EVOLUATE_MOVIE,
+  FILTER_MOVIES,
 } from './const';
 
 const initState = {
   moviesList: [],
 	categories: [],
+	filteredMovies: [],
 };
 
 const movieReducer = (state = initState, action) => {
@@ -70,6 +72,28 @@ const movieReducer = (state = initState, action) => {
       return {
         ...state,
         moviesList: copyState,
+      };
+    }
+
+    case FILTER_MOVIES: {
+      let filteredMovies;
+
+      if (action.checkedCategories.length > 0) {
+        filteredMovies = state.moviesList.reduce((acc, cur) => {
+          action.checkedCategories.forEach((category) => {
+            if (cur.category === category) {
+              acc.push(cur)
+            } 
+          })
+          return acc;
+        }, []);
+      } else {
+        filteredMovies = [];
+      }
+        
+      return {
+        ...state,
+        filteredMovies: filteredMovies,
       };
     }
 
