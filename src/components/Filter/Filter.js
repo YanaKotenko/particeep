@@ -1,8 +1,8 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import classNames from 'classnames';
 
-import { toggleCategoryState } from '../../store/actions';
+import { toggleCategoryState, setAmountSelected } from '../../store/actions';
 
 import {
   FilterBox,
@@ -16,13 +16,14 @@ import {
 const Filter = (props) => {
   const dispatch = useDispatch();
   const { categories } = props;
+  const { perPageNumbers, perPageSelected } = useSelector((store) => store.movies);
 
   const onToggleChecked = (id) => {
     dispatch(toggleCategoryState(id));
   }
 
   const onClickAmount = (amount) => {
-    // dispatch(toggleCategoryState(id));
+    dispatch(setAmountSelected(amount));
   }
 
   return (
@@ -39,10 +40,10 @@ const Filter = (props) => {
         ))}
       </div>
       <div className={PerPageBox}>
-        {[4, 8, 12].map((amount) => (
+        {perPageNumbers.map((amount) => (
           <div
             key={amount}
-            className={classNames(PerPage, true ? Active : '')}
+            className={classNames(PerPage, perPageSelected === amount ? Active : '')}
             onClick={() => onClickAmount(amount)}
           >
             {amount}

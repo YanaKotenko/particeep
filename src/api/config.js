@@ -15,7 +15,7 @@ const movies = [
     title: 'Oceans 8',
     category: 'Comedy',
     poster: oceans8,
-    setLike: true,
+    setLike: false,
     setDislike: false,
     likes: 4,
     dislikes: 1
@@ -58,7 +58,7 @@ const movies = [
   }, {
     id: '6',
     title: 'Pretty woman',
-    category: 'Thriller',
+    category: 'Comedy',
     poster: prettyWoman,
     setLike: false,
     setDislike: false,
@@ -78,7 +78,7 @@ const movies = [
     title: 'Seven',
     category: 'Thriller',
     poster: seven,
-    setLike: false,
+    setLike: true,
     setDislike: false,
     likes: 2,
     dislikes: 1

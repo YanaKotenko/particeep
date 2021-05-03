@@ -6,6 +6,7 @@ import {
   TOGGLE_CATEGORY_STATE,
   EVOLUATE_MOVIE,
   FILTER_MOVIES,
+  SET_AMOUNT_SELECTED,
 } from './const';
 
 export const getMovies = () => (dispatch) => {
@@ -44,4 +45,8 @@ export const evoluateMovie = (id, action) => (dispatch) => {
 
 export const filterMovies = (checkedCategories) => (dispatch) => {
   dispatch({ type: FILTER_MOVIES, checkedCategories });
+};
+
+export const setAmountSelected = (amount) => (dispatch) => {
+  dispatch({ type: SET_AMOUNT_SELECTED, amount });
 };

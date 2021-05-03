@@ -5,12 +5,15 @@ import {
 	TOGGLE_CATEGORY_STATE,
 	EVOLUATE_MOVIE,
   FILTER_MOVIES,
+  SET_AMOUNT_SELECTED,
 } from './const';
 
 const initState = {
   moviesList: [],
 	categories: [],
 	filteredMovies: [],
+  perPageNumbers: [3, 6, 9],
+  perPageSelected: 3,
 };
 
 const movieReducer = (state = initState, action) => {
@@ -94,6 +97,13 @@ const movieReducer = (state = initState, action) => {
       return {
         ...state,
         filteredMovies: filteredMovies,
+      };
+    }
+
+    case SET_AMOUNT_SELECTED: {
+      return {
+        ...state,
+        perPageSelected: action.amount,
       };
     }
 
