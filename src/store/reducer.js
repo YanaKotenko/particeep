@@ -13,7 +13,7 @@ const initState = {
 	categories: [],
 	filteredMovies: [],
   perPageNumbers: [3, 6, 9],
-  perPageSelected: 3,
+  perPageSelected: 6,
 };
 
 const movieReducer = (state = initState, action) => {
